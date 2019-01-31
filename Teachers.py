@@ -37,7 +37,13 @@ class RetrieveTeacherInfo:
 
         return "response: successfully created teacher in the database"
 
+    def get_total_teachers(self):
+        sql_query = "SELECT count(*) FROM teachers"
+        mycursor.execute(sql_query)
+        return mycursor.fetchall()
+
 if __name__ == "__main__":
     instance = RetrieveTeacherInfo()
     instance.get_teacher_info(4)
+    instance.get_total_teachers()
 
