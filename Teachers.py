@@ -30,11 +30,12 @@ class RetrieveTeacherInfo:
         self.qualification = qualification
         self.experience = experience
         self.salary = salary
-
         sql_query_insert = "INSERT INTO teachers (Teacher_Name, Teacher_Age, Teacher_Qualification, Teacher_Experience, Teacher_Salary) VALUES (?, ?, ?, ?, ?)"
         sql_query_values = (self.name, self.age, self.qualification, self.experience, self.salary)
         mycursor.execute(sql_query_insert, sql_query_values)
         db_connection.commit()
+
+        return "response: successfully created teacher in the database"
 
 if __name__ == "__main__":
     instance = RetrieveTeacherInfo()
