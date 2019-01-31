@@ -37,8 +37,14 @@ class RetrieveStudentInfo:
 
         return "response: successfully created student in the database"
 
+    def get_total_students(self):
+        sql_query = "SELECT count(*) FROM students"
+        mycursor.execute(sql_query)
+        return mycursor.fetchall()
+
 if __name__ == "__main__":
     instance = RetrieveStudentInfo()
     #instance.set_student_info('squirtle',6,2,'b')
     #instance.get_student_info(12)
+    instance.get_total_students()
 
