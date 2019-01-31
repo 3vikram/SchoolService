@@ -22,7 +22,17 @@ class RetrieveStudentInfo:
             Student_information['studentClass'] = record[3]
             Student_information['studentSection'] = record[4]
             return Student_information
+        
+    def set_student_info(self, name, age, sclass, section):
+        self.name = name
+        self.age = age
+        self.Class = sclass
+        self.section = section
 
+        sql_query_insert = "INSERT INTO students (Student_Name, Student_Age, Student_Class, Student_Section) VALUES (?, ?, ?, ?)"
+        sql_query_values = (self.name, self.age, self.Class, self.section)
+        mycursor.execute(sql_query_insert, sql_query_values)
+        db_connection.commit()
 
 if __name__ == "__main__":
     instance = RetrieveStudentInfo()
