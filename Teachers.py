@@ -24,6 +24,18 @@ class RetrieveTeacherInfo:
             Teacher_information['TeacherSalary'] = record[5]
             return Teacher_information
 
+    def set_teacher_info(self, name, age, qualification, experience, salary):
+        self.name = name
+        self.age = age
+        self.qualification = qualification
+        self.experience = experience
+        self.salary = salary
+
+        sql_query_insert = "INSERT INTO teachers (Teacher_Name, Teacher_Age, Teacher_Qualification, Teacher_Experience, Teacher_Salary) VALUES (?, ?, ?, ?, ?)"
+        sql_query_values = (self.name, self.age, self.qualification, self.experience, self.salary)
+        mycursor.execute(sql_query_insert, sql_query_values)
+        db_connection.commit()
+
 if __name__ == "__main__":
     instance = RetrieveTeacherInfo()
     instance.get_teacher_info(4)
