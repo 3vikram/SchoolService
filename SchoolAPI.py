@@ -13,8 +13,8 @@ def get_teacher_data(userid):
 
 @app.route('/studentId/<int:studentid>', methods=['GET'])
 def get_student_data(studentid):
-    instance1 = RetrieveStudentInfo()
-    return jsonify(instance1.get_student_info(studentid))
+    student_instance = RetrieveStudentInfo()
+    return jsonify(student_instance.get_student_info(studentid))
 
 if __name__ == "__main__":
     app.run(debug=True)
