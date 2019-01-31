@@ -11,6 +11,7 @@ class RetrieveStudentInfo:
     def get_student_info(self, ID):
         self.ID = ID
         sql_query = "SELECT * FROM students WHERE Student_ID = {}".format(self.ID)
+        print(sql_query)
         mycursor.execute(sql_query)
         student_record = mycursor.fetchall()
 
@@ -22,7 +23,7 @@ class RetrieveStudentInfo:
             Student_information['studentClass'] = record[3]
             Student_information['studentSection'] = record[4]
             return Student_information
-        
+
     def set_student_info(self, name, age, sclass, section):
         self.name = name
         self.age = age
@@ -34,7 +35,10 @@ class RetrieveStudentInfo:
         mycursor.execute(sql_query_insert, sql_query_values)
         db_connection.commit()
 
+        return "response: successfully created student in the database"
+
 if __name__ == "__main__":
     instance = RetrieveStudentInfo()
-    instance.get_student_info(4)
+    #instance.set_student_info('squirtle',6,2,'b')
+    #instance.get_student_info(12)
 
