@@ -37,5 +37,15 @@ def create_teacher():
     create_teacher_info = RetrieveTeacherInfo()
     return jsonify(create_teacher_info.set_teacher_info(teacher_name, teacher_age, teacher_qualification, teacher_experience, teacher_salary))
 
+@app.route('/teacher/count', methods=['GET'])
+def total_teachers():
+    total_teachers_instance = RetrieveTeacherInfo()
+    return jsonify(total_teachers_instance.get_total_teachers())
+
+@app.route('/student/count', methods=['GET'])
+def total_students():
+    total_students_instance = RetrieveStudentInfo()
+    return jsonify(total_students_instance.get_total_students())
+
 if __name__ == "__main__":
     app.run(debug=True)
