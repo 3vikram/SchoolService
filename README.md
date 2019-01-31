@@ -1,2 +1,2 @@
 # SchoolService
-School service is about providing services schools to retreive data and update data like teachers information, students information by using the API calls
+This service helps to manage the teachers and students records via REST API services
