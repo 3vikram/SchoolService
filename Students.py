@@ -2,9 +2,9 @@ import mysql.connector
 from mysql.connector import errorcode
 
 db_connection = mysql.connector.connect(user='root', password='root',
-                                        host='127.0.0.1', database='school')
+                                        host='127.0.0.1', database='school', use_pure=True)
 
-mycursor = db_connection.cursor()
+mycursor = db_connection.cursor(prepared=True)
 
 class RetrieveStudentInfo:
 
