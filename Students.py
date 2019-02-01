@@ -40,7 +40,16 @@ class RetrieveStudentInfo:
     def get_total_students(self):
         sql_query = "SELECT count(*) FROM students"
         mycursor.execute(sql_query)
-        return mycursor.fetchall()
+        total_students = mycursor.fetchall()
+        return "Total Students: {}".format(total_students[0][0])
+
+    def remove_student(self, ID):
+        self.ID = ID
+        sql_query = "DELETE FROM students WHERE Student_ID={}".format(self.ID)
+        mycursor.execute(sql_query)
+        db_connection.commit()
+        return "Successfully removed student data"
+
 
 if __name__ == "__main__":
     instance = RetrieveStudentInfo()
