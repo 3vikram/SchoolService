@@ -47,5 +47,19 @@ def total_students():
     total_students_instance = RetrieveStudentInfo()
     return jsonify(total_students_instance.get_total_students())
 
+@app.route('/teacher/remove', methods=['DELETE'])
+def delete_teacher():
+    data = request.get_json()
+    teacher_ID = data['tid']
+    create_teacher_remove = RetrieveTeacherInfo()
+    return jsonify(create_teacher_remove.remove_teacher(teacher_ID))
+
+@app.route('/student/remove', methods=['DELETE'])
+def delete_student():
+    data = request.get_json()
+    student_ID = data['sid']
+    create_student_remove = RetrieveStudentInfo()
+    return jsonify(create_student_remove.remove_student(student_ID))
+
 if __name__ == "__main__":
     app.run(debug=True)
