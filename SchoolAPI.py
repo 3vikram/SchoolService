@@ -61,5 +61,27 @@ def delete_student():
     create_student_remove = RetrieveStudentInfo()
     return jsonify(create_student_remove.remove_student(student_ID))
 
+@app.route('/teacher/update', methods=['PUT'])
+def update_teacher():
+    data = request.get_json()
+    teacher_name = data['tname']
+    teacher_age = data['tage']
+    teacher_qualification = data['tqualification']
+    teacher_experience = data['texperience']
+    teacher_salary = data['tsalary']
+    create_teacher_info = RetrieveTeacherInfo()
+    return jsonify(create_teacher_info.update_teacher_info(teacher_name, teacher_age, teacher_qualification, teacher_experience, teacher_salary))
+
+@app.route('/student/update', methods=['PUT'])
+def update_student():
+    data = request.get_json()
+    student_name = data['sname']
+    student_age = data['sage']
+    student_class = data['sclass']
+    student_section = data['ssection']
+    create_student_info = RetrieveStudentInfo()
+    return jsonify(create_student_info.update_student_info(student_name, student_age, student_class, student_section))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
