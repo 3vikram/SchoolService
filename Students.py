@@ -50,10 +50,17 @@ class RetrieveStudentInfo:
         db_connection.commit()
         return "Successfully removed student data"
 
+    def update_student_info(self, name, age, Class, section):
+        self.name = name
+        self.age = age
+        self.Class = Class
+        self.section = section
+        sql_query_update = "UPDATE students SET Student_Age = ?, Student_Class = ?, Student_Section = ? WHERE Student_Name = ?"
+        sql_query_update_values = (self.age, self.Class, self.section, self.name)
+        mycursor.execute(sql_query_update, sql_query_update_values)
+        db_connection.commit()
+        return "Success: Updated student {} record in our database".format(self.name)
+
 
 if __name__ == "__main__":
     instance = RetrieveStudentInfo()
-    #instance.set_student_info('squirtle',6,2,'b')
-    #instance.get_student_info(12)
-    instance.get_total_students()
-
