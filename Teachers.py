@@ -50,9 +50,19 @@ class RetrieveTeacherInfo:
         db_connection.commit()
         return "Successfully removed teacher data"
 
+    def update_teacher_info(self, name, age, qualification, experience, salary):
+        self.name = name
+        self.age = age
+        self.qualification = qualification
+        self.experience = experience
+        self.salary = salary
+        sql_query_update = "UPDATE teachers SET Teacher_Age = ?, Teacher_Qualification = ?, Teacher_Experience = ?, Teacher_Salary = ? WHERE Teacher_Name = ?"
+        sql_query_update_values = (self.age, self.qualification, self.experience, self.salary, self.name)
+        mycursor.execute(sql_query_update, sql_query_update_values)
+        db_connection.commit()
+        return "Success: Updated teacher {} record in our database".format(self.name)
+
 
 if __name__ == "__main__":
     instance = RetrieveTeacherInfo()
-    instance.get_teacher_info(4)
-    instance.get_total_teachers()
 
