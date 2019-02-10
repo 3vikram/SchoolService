@@ -7,6 +7,7 @@ REST Services created can be used by downloading the POSTMan dump from https://w
 
   Create Student information via /student/create
   Create Teacher information via /teacher/create
+  Register users to manage School DB information via /user/register (No API secret required)
   
 2. PUT requests (requires API secret in the HTTP request),
 
