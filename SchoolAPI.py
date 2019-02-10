@@ -1,9 +1,8 @@
-from flask import Flask, make_response
-from flask import jsonify
-from flask import request
+from flask import Flask, make_response, jsonify, request
 from Teachers import *
 from Students import *
 from RequestValidation import *
+from UsersRegisteration import *
 
 app = Flask(__name__)
 
@@ -132,6 +131,26 @@ def update_student():
         return jsonify(create_student_info.update_student_info(student_name, student_age, student_class, student_section))
     else:
         return jsonify({"message": "Unauthorised access"}), 403
+
+@app.route('/user/register', methods=['POST'])
+def register_users():
+    data = request.get_json()
+    username = data['username']
+    emailid = data['email id']
+    user_password = data['password']
+    confirm_password = data['confirm password']
+    contact_number = data['contact number']
+    user_registration_instance = UserRegistration(username, emailid, user_password, confirm_password, contact_number)
+    if not(user_registration_instance.validate_Username()):
+        return jsonify("response: Username must be of length not more than 20 and can contain only _ as a special character"), 401
+    elif not(user_registration_instance.validate_EmailID()):
+        return jsonify("response: Invalid Email Address"), 401
+    elif not(user_registration_instance.validate_Password()):
+        return jsonify("response: Password and Confirm Password are not matching or Password length is less than 8 or more than 14"), 401
+    elif not(user_registration_instance.validate_ContactNo()):
+        return jsonify("response: Contact number must be only digits and length should be 10"), 401
+    else:
+        return jsonify(user_registration_instance.register_user())
 
 
 if __name__ == "__main__":
