@@ -14,7 +14,7 @@ def get_teacher_data(userid):
     teacher_instance = RetrieveTeacherInfo()
     api_token_validation = RequestValidator()
     if api_token_validation.api_token_validation(auth):
-        return jsonify(teacher_instance.get_teacher_info(userid)), {'X-Frame'}
+        return jsonify(teacher_instance.get_teacher_info(userid))
     else:
         return jsonify({"message": "Unauthorised access"}), 403
 
