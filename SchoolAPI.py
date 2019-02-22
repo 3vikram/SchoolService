@@ -151,7 +151,21 @@ def register_users():
         return jsonify("response: Contact number must be only digits and length should be 10"), 401
     else:
         return jsonify(user_registration_instance.register_user())
+    
+@app.route('/user/login', methods=['POST'])
+def login_users():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+    user_login_instance = UserLoginLogout()
+    return jsonify(user_login_instance.login_verification(username, password))
 
+@app.route('/user/logout', methods=['GET'])
+def logout_users():
+    if 'user_sessionID' in session:
+        user_logout_instance = UserLoginLogout()
+        user_session = user_logout_instance.logout_verification('user_sessionID')
+        return jsonify(user_session)
 
 if __name__ == "__main__":
     app.run(debug=True)
