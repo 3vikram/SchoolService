@@ -5,28 +5,34 @@ REST Services created can be used by downloading the POSTMan dump from https://w
 
 1. POST requests (requires API secret in the HTTP request),
 
-  Create Student information via /student/create
+    Create Student information via /student/create
   
-  Create Teacher information via /teacher/create
+    Create Teacher information via /teacher/create
   
-  Register users to manage School DB information via /user/register (No API secret required)
+    Register users to manage School DB information via /user/register (No API secret required)
   
-  Login users via /user/login
+    Login users via /user/login
   
 2. PUT requests (requires API secret in the HTTP request),
 
-  Update Student information via /student/update
-  Update Teacher information via /teacher/update
+    Update Student information via /student/update
+    
+    Update Teacher information via /teacher/update
 
 3. GET requests (requires API secret in the HTTP request for getting teachers and students information),
 
-  Get teachers information by passing teacher's ID in the URL, /teacher/teacherId/<Teacher_ID>
-  Get students information by passing student's ID in the URL, /student/studentId/<Student_ID>
-  Get number of teachers in the school via /teacher/count
-  Get number of students in the school via /student/count
-  Logout users via /user/logout
+    Get teachers information by passing teacher's ID in the URL, /teacher/teacherId/<Teacher_ID>
+    
+    Get students information by passing student's ID in the URL, /student/studentId/<Student_ID>
+  
+    Get number of teachers in the school via /teacher/count
+  
+    Get number of students in the school via /student/count
+  
+    Logout users via /user/logout
   
 4. DEL requests (requires API secret in the HTTP request),
 
-  Delete teacher record via /teacher/remove
-  Delete student record via /student/remove
+    Delete teacher record via /teacher/remove
+  
+    Delete student record via /student/remove
