@@ -19,7 +19,6 @@ class UserLoginLogout:
         if login_valid[0][0] == 1:
             secret = str(datetime.datetime.now())
             session = (jwt.encode({"username": self.username, "password": self.password}, secret , algorithm='HS256').decode())
-            print(session)
             update_sql_query = "UPDATE users SET User_SessionID = ?, Session_Flag = ? WHERE User_Name = ?"
             update_sql_values = (session, True, self.username)
             mycursor.execute(update_sql_query, update_sql_values)
