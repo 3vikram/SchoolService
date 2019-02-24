@@ -23,7 +23,7 @@ class UserRegistration:
             return False
 
     def validate_EmailID(self):
-        EmailID_pattern = "^[\w\.]+\@[a-zA-Z0-9]+\.com"
+        EmailID_pattern = "^[a-zA-Z]+[\w\.]*[a-zA-Z][@*][a-zA-Z]+\.[a-z]+"
         if re.search(EmailID_pattern, self.EmailID):
             return True
         else:
