@@ -10,8 +10,9 @@ class RetrieveTeacherInfo:
 
     def get_teacher_info(self, ID):
         self.ID = ID
-        sql_query = "SELECT * FROM teachers WHERE Teacher_ID = {}".format(self.ID)
-        mycursor.execute(sql_query)
+        sql_query = "SELECT * FROM teachers WHERE Teacher_ID = ?"
+        sql_value = (self.ID,)
+        mycursor.execute(sql_query, sql_value)
         teacher_record = mycursor.fetchall()
 
         Teacher_information = {}
@@ -45,8 +46,9 @@ class RetrieveTeacherInfo:
 
     def remove_teacher(self, ID):
         self.ID = ID
-        sql_query = "DELETE FROM teachers WHERE Teacher_ID={}".format(self.ID)
-        mycursor.execute(sql_query)
+        sql_query = "DELETE FROM teachers WHERE Teacher_ID=?"
+        sql_value = (self.ID,)
+        mycursor.execute(sql_query, sql_value)
         db_connection.commit()
         return "Successfully removed teacher data"
 
