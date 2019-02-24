@@ -10,9 +10,9 @@ class RetrieveStudentInfo:
 
     def get_student_info(self, ID):
         self.ID = ID
-        sql_query = "SELECT * FROM students WHERE Student_ID = {}".format(self.ID)
-        print(sql_query)
-        mycursor.execute(sql_query)
+        sql_query = "SELECT * FROM students WHERE Student_ID = ?"
+        sql_value = (self.ID,)
+        mycursor.execute(sql_query, sql_value)
         student_record = mycursor.fetchall()
 
         Student_information = {}
