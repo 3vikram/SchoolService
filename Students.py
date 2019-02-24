@@ -45,8 +45,9 @@ class RetrieveStudentInfo:
 
     def remove_student(self, ID):
         self.ID = ID
-        sql_query = "DELETE FROM students WHERE Student_ID={}".format(self.ID)
-        mycursor.execute(sql_query)
+        sql_query = "DELETE FROM students WHERE Student_ID=?"
+        sql_value = (self.ID,)
+        mycursor.execute(sql_query, sql_value)
         db_connection.commit()
         return "Successfully removed student data"
 
