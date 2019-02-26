@@ -22,7 +22,7 @@ class RetrieveStudentInfo:
             Student_information['studentAge'] = record[2]
             Student_information['studentClass'] = record[3]
             Student_information['studentSection'] = record[4]
-            return Student_information
+        return Student_information
 
     def set_student_info(self, name, age, sclass, section):
         self.name = name
