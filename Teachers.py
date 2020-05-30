@@ -1,8 +1,8 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-db_connection = mysql.connector.connect(user='root', password='root',
-                                        host='127.0.0.1', database='school', use_pure=True)
+db_connection = mysql.connector.connect(user='vikram', password='Kuttyseed02022019',
+                                        host='myrds.cos1fmkyxsdy.ap-south-1.rds.amazonaws.com', database='School', use_pure=True)
 
 mycursor = db_connection.cursor(prepared=True)
 

@@ -1,8 +1,8 @@
 from flask import Flask, make_response, jsonify, request
 from Teachers import *
 from Students import *
+from UserRegistration import *
 from RequestValidation import *
-from UsersRegisteration import *
 
 app = Flask(__name__)
 
@@ -168,4 +168,4 @@ def logout_users():
         return jsonify(user_session)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=80)

@@ -1,8 +1,8 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-db_connection = mysql.connector.connect(user='root', password='root',
-                                        host='127.0.0.1', database='school', use_pure=True)
+db_connection = mysql.connector.connect(user='vikram', password='Kuttyseed02022019',
+                                        host='myrds.cos1fmkyxsdy.ap-south-1.rds.amazonaws.com', database='School', use_pure=True)
 
 mycursor = db_connection.cursor(prepared=True)
 
@@ -10,7 +10,7 @@ class RetrieveStudentInfo:
 
     def get_student_info(self, ID):
         self.ID = ID
-        sql_query = "SELECT * FROM students WHERE Student_ID = ?"
+        sql_query = "SELECT * FROM Students WHERE Student_ID = ?"
         sql_value = (self.ID,)
         mycursor.execute(sql_query, sql_value)
         student_record = mycursor.fetchall()
@@ -30,7 +30,7 @@ class RetrieveStudentInfo:
         self.Class = sclass
         self.section = section
 
-        sql_query_insert = "INSERT INTO students (Student_Name, Student_Age, Student_Class, Student_Section) VALUES (?, ?, ?, ?)"
+        sql_query_insert = "INSERT INTO Students (Student_Name, Student_Age, Student_Class, Student_Section) VALUES (?, ?, ?, ?)"
         sql_query_values = (self.name, self.age, self.Class, self.section)
         mycursor.execute(sql_query_insert, sql_query_values)
         db_connection.commit()
@@ -38,14 +38,14 @@ class RetrieveStudentInfo:
         return "response: successfully created student in the database"
 
     def get_total_students(self):
-        sql_query = "SELECT count(*) FROM students"
+        sql_query = "SELECT count(*) FROM Students"
         mycursor.execute(sql_query)
         total_students = mycursor.fetchall()
         return "Total Students: {}".format(total_students[0][0])
 
     def remove_student(self, ID):
         self.ID = ID
-        sql_query = "DELETE FROM students WHERE Student_ID=?"
+        sql_query = "DELETE FROM Students WHERE Student_ID=?"
         sql_value = (self.ID,)
         mycursor.execute(sql_query, sql_value)
         db_connection.commit()
@@ -56,7 +56,7 @@ class RetrieveStudentInfo:
         self.age = age
         self.Class = Class
         self.section = section
-        sql_query_update = "UPDATE students SET Student_Age = ?, Student_Class = ?, Student_Section = ? WHERE Student_Name = ?"
+        sql_query_update = "UPDATE Students SET Student_Age = ?, Student_Class = ?, Student_Section = ? WHERE Student_Name = ?"
         sql_query_update_values = (self.age, self.Class, self.section, self.name)
         mycursor.execute(sql_query_update, sql_query_update_values)
         db_connection.commit()
