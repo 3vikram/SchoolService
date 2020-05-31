@@ -1,7 +1,7 @@
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="myrds.cos1fmkyxsdy.ap-south-1.rds.amazonaws.com",
+  host="127.0.0.1",
   user="vikram",
   passwd="Kuttyseed02022019"
 )
