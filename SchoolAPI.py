@@ -168,4 +168,4 @@ def logout_users():
         return jsonify(user_session)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=80)
+    app.run(host="0.0.0.0", port=80)
