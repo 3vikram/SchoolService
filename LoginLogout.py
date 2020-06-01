@@ -3,7 +3,7 @@ import jwt
 import datetime
 
 db_connection = mysql.connector.connect(user='root', password='root',
-                                        host='127.0.0.1', database='school', use_pure=True)
+                                        host='0.0.0.0', database='school', use_pure=True)
 
 mycursor = db_connection.cursor(prepared=True)
 
