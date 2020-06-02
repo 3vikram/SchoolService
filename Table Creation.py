@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 db_connection = mysql.connector.connect(user='vikram', password='Kuttyseed02022019',
-                                        host='127.0.0.1', database='School')
+                                        host='db', database='School')
 
 mycursor = db_connection.cursor()
 
