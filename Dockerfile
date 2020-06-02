@@ -1,6 +1,6 @@
 FROM ubuntu
 MAINTAINER Trivikram Rajendraprabhu
-
+EXPOSE 80
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y python3
